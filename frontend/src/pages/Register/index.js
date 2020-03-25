@@ -25,7 +25,7 @@ export default function Register(){
             email,
             whatsapp,
             city,
-            uf,
+            uf
         };
 
         try{
