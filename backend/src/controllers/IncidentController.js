@@ -8,7 +8,7 @@ module.exports = {
         const [count] = await connection('incidents').count();
 
         const index = await connection('incidents')
-            .join('ongs', 'ongs_id', "=", 'incident.ong_id')
+            .join('ongs', 'ongs.id', "=", 'incidents.ong_id')
             .limit(5)
             .offset((page - 1)*5)
             .select(['incidents.*', 
@@ -21,7 +21,7 @@ module.exports = {
 
         response.header('X-Total-Count', count['count(*)']);
 
-        return response.json(incidents);
+        response.json(index);
     },
 
     async create(request, response){
